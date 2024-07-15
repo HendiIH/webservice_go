@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Albums</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white">
+  <h1 class="text-center p-4">List Album</h1>
+
+  <div class="p-5 pt-8"> 
+  <ul class="grid grid-cols-3 gap-10 justify-between px-18">
+    {{range .}}
+    <li class="p-5 border-2 hover:border-t-4 rounded-md text-center">{{.Title}} by {{.Artist}} - ${{printf "%.2f" .Price}}</li>
+    {{end}}
+  </ul>
+  </div>
+    
+<div class="p-5 pt8">
+  <form method="post" action="/albums" enctype="application/x-www-form-urlencoded">
+    <ul class="grid grid-cols-1 gap-5 justify-between px-20">
+    <label for="title">Title:</label>
+    <input class="border-4 hover:border-y-8 rounded-md" type="text" id="title" name="Title" required><br>
+
+    <label for="artist">Artist:</label>
+    <input class="border-4 hover:border-y-8 rounded-md" type="text" id="artist" name="Artist" required><br>
+
+    <label for="price">Price:</label>
+    <input class="border-4 hover:border-y-8 rounded-md" type="number" id="price" name="Price" step="0.01" required><br>
+
+    <input class="bg-sky-400 hover:bg-sky-800 rounded-lg" type="submit" value="Add Album">
+    </ul>
+  </form>
+</div>
+</body>
+</html>
